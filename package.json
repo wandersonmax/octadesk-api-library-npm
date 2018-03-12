@@ -1,0 +1,27 @@
+{
+  "name": "octadesk-api",
+  "version": "1.0.0",
+  "description": "Node proxy for Octadesk API - https://api.octadesk.services",
+  "main": "./lib",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "mocha test"
+  },
+  "keywords": [
+    "octadesk",
+    "api"
+  ],
+  "author": "Octadesk Team",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "chai": "^4.1.2",
+    "mocha": "^5.0.4",
+    "nconf": "^0.10.0",
+    "nock": "^9.2.3",
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2"
+  }
+}
