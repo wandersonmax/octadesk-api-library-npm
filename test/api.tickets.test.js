@@ -24,9 +24,11 @@ describe('api.tickets', () => {
                 assert.isOk(response.data.length)
                 done()
               })
+          } else {
+            done()
           }
         })
-    }).timeout(30000)
+    }).timeout(90000)
 
     it('should send GET request to /search?status=novo|pendente&openDate=<2018-03-01', (done) => {
       let options = {
@@ -44,9 +46,42 @@ describe('api.tickets', () => {
                 assert.isOk(response.data.length)
                 done()
               })
+          } else {
+            done()
           }
         })
     }).timeout(30000)
+
+    it('should send GET request to /search?priority=alta,!baixa&openDate=<2018-03-01&sortBy=number', (done) => {
+      let options = {
+        number: '<1000',
+        priority: {
+          equals: ['alta'],
+          notEquals: ['baixa']
+        },
+        openDate: {
+          isLowerEqualThan: [new Date('2018-03-01')]
+        },
+        sortBy: 'number',
+        outputDataSet: ['number', 'priority', 'lastInteraction.comments']
+      }
+
+      octadesk.tickets.search(options)
+        .then(response => {
+          assert.isOk(response.data.length)
+
+          //paginating
+          if (response.options.lastTicketReference) {
+            octadesk.tickets.search(response.options)
+              .then(response => {
+                assert.isOk(response.data.length)
+                done()
+              })
+          } else {
+            done()
+          }
+        })
+    }).timeout(90000)
   })
 })
 

@@ -18,4 +18,17 @@ describe('api.login', () => {
         })
     }).timeout(5000)
   })
+
+  describe('resetPassword', () => {
+    it('should send GET request to /resetPassword', (done) => {
+      const baseUrl = config.get("API_BASEURL")
+      const octadesk = new Octadesk(baseUrl)
+
+      octadesk.resetPassword(config.get("API_SUBDOMAIN"), config.get("API_USERNAME"))
+        .then(response => {
+          assert.isOk(response.success)
+          done()
+        })
+    }).timeout(5000)
+  })
 })
