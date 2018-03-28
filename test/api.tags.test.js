@@ -5,7 +5,7 @@ const Octadesk = require('..')
 
 const baseUrl = config.get("API_BASEURL")
 
-const octadesk = new Octadesk(baseUrl, config.get("API_TOKEN"))
+const octadesk = new Octadesk(baseUrl, config.get("API_ACCESS_TOKEN"))
 
 describe('api.tags', () => {
   describe('get', () => {
