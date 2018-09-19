@@ -4,6 +4,7 @@ docs/index.html
 config.json
 docs
 Nuget.config
+NuGet.config
 
 # Logs
 logs
